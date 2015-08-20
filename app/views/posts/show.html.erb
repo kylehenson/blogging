@@ -9,3 +9,26 @@
     <% end %>
 </p>
 <p><%= @post.body %></p>
+
+<div class="comments">
+  <h2>Comments:</h2>
+  <% @post.comments.each do |comment| %>
+  <div class="comment">
+    <b><%= comment.author %></b>: <%= comment.body %>
+  </div>
+  <% end %>
+</div>
+
+<form class="comment-form" action="" method="post">
+  <input type="hidden" id="post-id" value="<%= @post.id %>">
+  <label for="comment-author">Author:</label>
+  <textarea class="form-author" type="text" id="comment-author"></textarea>
+  <label for="comment-author">Body:</label>
+  <textarea class="form-body" type="text" id="comment-body"></textarea>
+  <input id="new-comment" type="submit" value="Add Comment">
+</form>
+<!-- <div class="comment-form">
+  <textarea class="form-author" type="text" id="comment-author"></textarea>
+  <textarea class="form-body" type="text" id="comment-body"></textarea>
+  <input class="btn btn-default pull-right" id="new-comment" type="submit" value="Add Comment">
+</div> -->
