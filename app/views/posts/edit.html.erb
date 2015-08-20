@@ -1,0 +1,12 @@
+<h1>Edit Post:</h1>
+
+<%= form_for(@post, method: 'put') do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+  <%= f.select(:status, [['draft'], ['publish']]) %>
+  <%= f.submit "Submit" %>
+<% end %>
