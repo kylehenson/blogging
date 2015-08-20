@@ -40,20 +40,4 @@ RSpec.describe 'post creation' do
 
     expect(page).to have_content("Body can't be blank")
   end
-
-  xit 'can create a post that is a draft and click a button to view it in the index of posts' do
-    visit root_path
-    click_link_or_button "Create a Post"
-    fill_in "Title", with: "Jobs"
-    fill_in "Body", with: "find one"
-    fill_in "Author", with: "me"
-
-    click_link_or_button "Submit"
-    expect(page).to have_content("All Posts")
-    expect(page).not_to have_content("Jobs")
-
-    click_link_or_button "drafts"
-    expect(page).to have_content("All Posts")
-    expect(page).to have_content("Jobs")
-  end
 end

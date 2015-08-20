@@ -1,13 +1,15 @@
 <h1>All Posts</h1>
 
 <%= link_to "Create a Post", new_post_path %>
-<button type="button" id="draft-posts">drafts</button>
+<button type="button" id="draft-posts">draft</button>
 
 <div class="published-posts">
   <% @posts.each do |post| %>
     <% if post.status == "publish" %>
       <h3><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
       <h4>Author: <%= post.author %></h4>
+      <h5>status: published</h5>
+      <%= link_to 'Edit', edit_post_path(post) %>
     <% end %>
   <% end %>
 </div>
@@ -17,6 +19,8 @@
     <% if post.status == "draft" %>
       <h3><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
       <h4>Author: <%= post.author %></h4>
+      <h5>status: <%= post.status %></h5>
+      <%= link_to 'Edit', edit_post_path(post) %>
     <% end %>
   <% end %>
 </div>
