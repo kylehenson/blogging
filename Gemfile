@@ -16,8 +16,8 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'web-console', '~> 2.0'
+end
 
-  group :production do
-    gem 'rails_12factor'
-  end
+group :production do
+  gem 'rails_12factor'
 end
