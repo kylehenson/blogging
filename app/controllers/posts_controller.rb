@@ -47,6 +47,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def remove_image
+    post = Post.find(params[:post_id])
+    post.image = nil
+    post.save
+    redirect_to post_path(post)
+  end
+
   private
 
   def post_params
@@ -54,6 +61,7 @@ class PostsController < ApplicationController
                                  :body,
                                  :author,
                                  :status,
+                                 :image,
                                  :tag_ids => [])
   end
 end

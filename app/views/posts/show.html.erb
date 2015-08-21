@@ -16,6 +16,8 @@
       published
     <% end %>
 </p>
+<%= image_tag @post.image.url(:thumb) %>
+<%= link_to "Remove Image", remove_path(post_id: @post.id), method: :delete %>
 <p><%= markdown(@post.body) %></p>
 
 <div class="comments">
@@ -36,8 +38,3 @@
   <textarea class="form-body" type="text" id="comment-body"></textarea>
   <input id="new-comment" type="submit" value="Add Comment">
 </form>
-<!-- <div class="comment-form">
-  <textarea class="form-author" type="text" id="comment-author"></textarea>
-  <textarea class="form-body" type="text" id="comment-body"></textarea>
-  <input class="btn btn-default pull-right" id="new-comment" type="submit" value="Add Comment">
-</div> -->

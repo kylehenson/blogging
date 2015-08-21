@@ -24,34 +24,6 @@ $(document).ready(function() {
     }
   });
 
-  // $(".tag-filter").click(function() {
-    // $(".post-title").each(function() {
-    //   $(this.parentElement).fadeOut();
-    // })
-    // var tagName = $(this).text()
-    // $(".post-tags").each(function(){
-    //   debugger;
-    //
-    //   $(this.parentElement).fadeIn();
-    // });
-    // $(".post-title").each(function() {
-    //   $(this.parentElement).fadeOut()
-    //   .then(function() {
-    //     $("[data-post-tags=" + tagName + "]").fadeIn();
-    //   })
-    // })
-      // debugger;
-
-    // $(".post-tags").each(function(){
-    //
-    //   if ( ($(this).text().search(new RegExp(tagName, "i")) < 0)) {
-    //     $(this.parentElement).fadeOut();
-    //   } else {
-    //     $(this.parentElement).show();
-    //   }
-    // });
-  // });
-
   $("#title-filter").keyup(function(){
     var text = $(this).val()
     if (text == "") {
