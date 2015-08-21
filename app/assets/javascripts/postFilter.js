@@ -7,14 +7,59 @@ $(document).ready(function() {
     })
   });
 
-  $("#title-filter").keyup(function(){
-    var text = $(this).val()
-    if (text == "") {
-      $(".comment-title").each(function(){
+  $('.tag-filter').click(function() {
+    var filter = $(this).text();
+    if (filter === "all") {
+      $(".post-tags").each(function(){
         $(this.parentElement).fadeIn();
       });
     } else {
-    $(".comment-title").each(function(){
+      $(".post-tags").each(function() {
+        if ($(this.children).text().indexOf(filter) > -1) {
+          $(this.parentElement).show();
+        } else {
+          $(this.parentElement).fadeOut();
+        }
+      });
+    }
+  });
+
+  // $(".tag-filter").click(function() {
+    // $(".post-title").each(function() {
+    //   $(this.parentElement).fadeOut();
+    // })
+    // var tagName = $(this).text()
+    // $(".post-tags").each(function(){
+    //   debugger;
+    //
+    //   $(this.parentElement).fadeIn();
+    // });
+    // $(".post-title").each(function() {
+    //   $(this.parentElement).fadeOut()
+    //   .then(function() {
+    //     $("[data-post-tags=" + tagName + "]").fadeIn();
+    //   })
+    // })
+      // debugger;
+
+    // $(".post-tags").each(function(){
+    //
+    //   if ( ($(this).text().search(new RegExp(tagName, "i")) < 0)) {
+    //     $(this.parentElement).fadeOut();
+    //   } else {
+    //     $(this.parentElement).show();
+    //   }
+    // });
+  // });
+
+  $("#title-filter").keyup(function(){
+    var text = $(this).val()
+    if (text == "") {
+      $(".post-title").each(function(){
+        $(this.parentElement).fadeIn();
+      });
+    } else {
+    $(".post-title").each(function(){
       if ($(this).text().search(new RegExp(text, "i")) < 0) {
           $(this.parentElement).fadeOut();
       } else {
@@ -27,11 +72,11 @@ $(document).ready(function() {
   $("#author-filter").keyup(function(){
     var text = $(this).val()
     if (text == "") {
-      $(".comment-author").each(function(){
+      $(".post-author").each(function(){
         $(this.parentElement).fadeIn();
       });
     } else {
-    $(".comment-author").each(function(){
+    $(".post-author").each(function(){
       if ($(this).text().search(new RegExp(text, "i")) < 0) {
           $(this.parentElement).fadeOut();
       } else {
