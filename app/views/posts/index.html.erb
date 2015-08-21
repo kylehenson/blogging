@@ -12,6 +12,12 @@
 </div><br>
 <div>
   filter by tag:
+  <div><br>
+    <button type="button" class="tag-filter">all</button>
+    <% @tags.each do |tag| %>
+      <button type="button" class="tag-filter"><%= tag.name %></button>
+    <% end %>
+  </div>
 </div>
 <hr>
 
@@ -19,8 +25,16 @@
   <% @posts.each do |post| %>
     <% if post.status == "publish" %>
     <div class="post">
-      <h3 class="comment-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
-      <h4 class="comment-author">Author: <%= post.author %></h4>
+      <h3 class="post-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
+      <h4 class="post-author">Author: <%= post.author %></h4>
+      <div class="post-tags">
+        <% if post.tags.any? %>
+          <h5>Tags: <% post.tags.each do |tag| %>
+            <span style="border:outset"><%= tag.name %></span>
+          <% end %>
+          </h5>
+        <% end %>
+      </div>
       <h5>status: published</h5>
       <%= link_to 'Edit', edit_post_path(post) %>
     </div>
@@ -32,8 +46,14 @@
   <% @posts.each do |post| %>
     <% if post.status == "draft" %>
     <div class="post">
-      <h3 class="comment-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
-      <h4 class="comment-author">Author: <%= post.author %></h4>
+      <h3 class="post-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
+      <h4 class="post-author">Author: <%= post.author %></h4>
+      <% if post.tags.any? %>
+        <h5 class="post-tags">Tags: <% post.tags.each do |tag| %>
+          <span style="border:outset"><%= tag.name %></span>
+        <% end %>
+        </h5>
+      <% end %>
       <h5>status: <%= post.status %></h5>
       <%= link_to 'Edit', edit_post_path(post) %>
     </div>
