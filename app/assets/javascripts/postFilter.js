@@ -58,4 +58,11 @@ $(document).ready(function() {
     }
   });
 
+  // $("#num-of-comments").click(function() {
+  //   // debugger;
+  //   $(".post-author").each(function(){
+  //     $(this.parentElement).fadeIn();
+  //   });
+  // });
+
 });

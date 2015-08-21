@@ -9,6 +9,7 @@
 </div><br>
 <div>
   order by: <button type="button" id="draft-posts">draft</button>
+            <!-- <button type="button" id="num-of-comments"># of comments</button> -->
 </div><br>
 <div>
   filter by tag:
@@ -48,12 +49,14 @@
     <div class="post">
       <h3 class="post-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
       <h4 class="post-author">Author: <%= post.author %></h4>
-      <% if post.tags.any? %>
-        <h5 class="post-tags">Tags: <% post.tags.each do |tag| %>
-          <span style="border:outset"><%= tag.name %></span>
+      <div class="post-tags">
+        <% if post.tags.any? %>
+          <h5>Tags: <% post.tags.each do |tag| %>
+            <span style="border:outset"><%= tag.name %></span>
+          <% end %>
+          </h5>
         <% end %>
-        </h5>
-      <% end %>
+      </div>
       <h5>status: <%= post.status %></h5>
       <%= link_to 'Edit', edit_post_path(post) %>
     </div>
