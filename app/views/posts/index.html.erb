@@ -9,7 +9,7 @@
 </div><br>
 <div>
   order by: <button type="button" id="draft-posts">draft</button>
-            <!-- <button type="button" id="num-of-comments"># of comments</button> -->
+            <button type="button" id="num-of-comments"># of comments</button>
 </div><br>
 <div>
   filter by tag:
@@ -25,7 +25,7 @@
 <div class="published-posts">
   <% @posts.each do |post| %>
     <% if post.status == "publish" %>
-    <div class="post">
+    <div class="post" data-comments="<%= post.comments.count %>">
       <h3 class="post-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
       <h4 class="post-author">Author: <%= post.author %></h4>
       <div class="post-tags">
@@ -46,7 +46,7 @@
 <div class="draft-posts" style="display: none">
   <% @posts.each do |post| %>
     <% if post.status == "draft" %>
-    <div class="post">
+    <div class="post" data-comments="<%= post.comments.count %>">
       <h3 class="post-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
       <h4 class="post-author">Author: <%= post.author %></h4>
       <div class="post-tags">
