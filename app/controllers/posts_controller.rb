@@ -7,13 +7,16 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @tags = Tag.all
   end
 
   def new
     @post = Post.new
+    @tags = Tag.all
   end
 
   def create
+    @tags = Tag.all
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "Post successfully created."
@@ -26,6 +29,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tags = Tag.all
   end
 
   def update
@@ -39,16 +43,13 @@ class PostsController < ApplicationController
     end
   end
 
-  def practice
-    
-  end
-
   private
 
   def post_params
     params.require(:post).permit(:title,
                                  :body,
                                  :author,
-                                 :status)
+                                 :status,
+                                 :tag_ids)
   end
 end

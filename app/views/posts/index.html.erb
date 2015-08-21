@@ -1,17 +1,21 @@
 <h1>All Posts</h1>
 
-<div><%= link_to "Create a Post", new_post_path %></div><br>
+<div><%= link_to "Create a Post", new_post_path %></div>
+<div><%= link_to "View Tags", tags_path %></div><br>
 <div>
   <%= text_field_tag :search, params[:search], placeholder: "Search by Title", id: "title-filter" %>
 </div><br>
 <div>
   order by: <button type="button" id="draft-posts">draft</button>
+</div><br>
+<div>
+  filter by tag:
 </div>
 
 <div class="published-posts">
   <% @posts.each do |post| %>
     <% if post.status == "publish" %>
-    <div class="comment">
+    <div class="post">
       <h3 class="comment-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
       <h4>Author: <%= post.author %></h4>
       <h5>status: published</h5>
@@ -24,7 +28,7 @@
 <div class="draft-posts" style="display: none">
   <% @posts.each do |post| %>
     <% if post.status == "draft" %>
-    <div class="comment">
+    <div class="post">
       <h3 class="comment-title"><b>Title: </b><%= link_to post.title, post_path(post.id) %></h3>
       <h4>Author: <%= post.author %></h4>
       <h5>status: <%= post.status %></h5>

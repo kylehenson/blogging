@@ -5,6 +5,9 @@
   <%= f.text_field :body %>
   <%= f.label :author %>
   <%= f.text_field :author %>
+  <%= f.label :status %>
   <%= f.select(:status, [['draft'], ['publish']]) %>
+  <%= f.label :tags %>
+  <%= f.collection_select(:tag_ids, @tags, :id, :name) %>
   <%= f.submit "Submit" %>
 <% end %>
