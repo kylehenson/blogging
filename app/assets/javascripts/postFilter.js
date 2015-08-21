@@ -58,11 +58,18 @@ $(document).ready(function() {
     }
   });
 
-  // $("#num-of-comments").click(function() {
-  //   // debugger;
-  //   $(".post-author").each(function(){
-  //     $(this.parentElement).fadeIn();
-  //   });
-  // });
+  $("#num-of-comments").click(function() {
+    var $publishedPosts = $('.published-posts');
+    var $post = $publishedPosts.children('.post');
+
+    $post.sort(function(a,b) {
+      var aData = a.getAttribute('data-comments');
+      var bData = b.getAttribute('data-comments');
+
+      return bData - aData;
+    });
+
+    $post.detach().appendTo($publishedPosts)
+  });
 
 });
