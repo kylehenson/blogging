@@ -8,13 +8,13 @@
       published
     <% end %>
 </p>
-<p><%= @post.body %></p>
+<p><%= markdown(@post.body) %></p>
 
 <div class="comments">
   <h2>Comments:</h2>
   <% @post.comments.each do |comment| %>
   <div class="comment">
-    <b><%= comment.author %></b>: <%= comment.body %>
+    <b><%= comment.author %></b>: <%= markdown(comment.body) %>
   </div>
   <% end %>
 </div>

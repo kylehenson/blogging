@@ -9,10 +9,12 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'responders'
+gem 'redcarpet'
 gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
