@@ -7,23 +7,6 @@ $(document).ready(function() {
     })
   });
 
-  // $("#title-filter").keyup(function(){
-  //   var filter = $(this).val()
-  //   if (filter == "") {
-  //     $(".task-title").each(function(){
-  //       $(this.parentElement).fadeIn();
-  //     });
-  //   } else {
-  //     $(".task-title").each(function(){
-  //       debugger;
-  //       if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-  //           $(this.parentElement).fadeOut();
-  //       } else {
-  //           $(this).show();
-  //       }
-  //     });
-  //   }
-  // });
   $("#title-filter").keyup(function(){
     var text = $(this).val()
     if (text == "") {
@@ -32,6 +15,23 @@ $(document).ready(function() {
       });
     } else {
     $(".comment-title").each(function(){
+      if ($(this).text().search(new RegExp(text, "i")) < 0) {
+          $(this.parentElement).fadeOut();
+      } else {
+          $(this).show();
+      }
+    });
+    }
+  });
+
+  $("#author-filter").keyup(function(){
+    var text = $(this).val()
+    if (text == "") {
+      $(".comment-author").each(function(){
+        $(this.parentElement).fadeIn();
+      });
+    } else {
+    $(".comment-author").each(function(){
       if ($(this).text().search(new RegExp(text, "i")) < 0) {
           $(this.parentElement).fadeOut();
       } else {

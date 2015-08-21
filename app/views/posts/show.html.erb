@@ -6,7 +6,6 @@
   <% @post.tags.each do |tag| %>
     <span style="border:outset"><%= tag.name %></span>
   <% end %>
-  <!-- <%= select_tag(@post ,options_from_collection_for_select(@tags, :id, :name)) %> -->
 </div>
 
 <h3>Author: <%= @post.author %></h3>
