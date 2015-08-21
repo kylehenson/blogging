@@ -1,9 +1,9 @@
 <h1>All Tags</h1>
 
-<div><%= link_to "Create a Tag", new_tag_path %></div>
+<div><%= link_to "Create a Tag", new_tag_path %></div><br>
 
 <div class="tags">
   <% @tags.each do |tag| %>
-    <%= tag.name %>
+    <span style="border:outset"><%= tag.name %></span>
   <% end %>
 </div>

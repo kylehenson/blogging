@@ -8,6 +8,6 @@
   <%= f.label :status %>
   <%= f.select(:status, [['draft'], ['publish']]) %>
   <%= f.label :tags %>
-  <%= f.collection_select(:tag_ids, @tags, :id, :name) %>
+  <%= f.collection_select(:tag_ids, @tags, :id, :name, {}, {multiple: true}) %>
   <%= f.submit "Submit" %>
 <% end %>

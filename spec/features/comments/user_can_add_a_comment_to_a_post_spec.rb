@@ -11,6 +11,7 @@ RSpec.describe 'comment creation' do
     fill_in "comment-author", with: "Jess"
     fill_in "comment-body", with: "I have one"
     click_link_or_button "Add Comment"
+    save_and_open_page
 
     visit post_path(post.id)
     expect(page).to have_content("Jobs")

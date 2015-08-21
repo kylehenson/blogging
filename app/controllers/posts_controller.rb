@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @tags = Tag.all
   end
 
   def show
@@ -16,6 +17,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    params["post"]["tag_ids"].reject!(&:blank?)
     @tags = Tag.all
     @post = Post.new(post_params)
     if @post.save
@@ -33,6 +35,8 @@ class PostsController < ApplicationController
   end
 
   def update
+    params["post"]["tag_ids"].reject!(&:blank?)
+    @tags = Tag.all
     @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = "successfully updated post."
@@ -50,6 +54,6 @@ class PostsController < ApplicationController
                                  :body,
                                  :author,
                                  :status,
-                                 :tag_ids)
+                                 :tag_ids => [])
   end
 end
