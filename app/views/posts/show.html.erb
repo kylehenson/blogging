@@ -1,5 +1,14 @@
 <%= link_to "<< Back to all Posts", posts_path %>
 <h1>Title: <%= @post.title %></h1>
+
+<h2>Tags:</h2>
+<div>
+  <% @post.tags.each do |tag| %>
+    <span style="border:outset"><%= tag.name %></span>
+  <% end %>
+  <!-- <%= select_tag(@post ,options_from_collection_for_select(@tags, :id, :name)) %> -->
+</div>
+
 <h3>Author: <%= @post.author %></h3>
 <p>status:
     <% if @post.status == "draft" %>

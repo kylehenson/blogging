@@ -40,4 +40,26 @@ RSpec.describe 'post creation' do
 
     expect(page).to have_content("Body can't be blank")
   end
+
+  it 'can create a post with tags' do
+    Tag.create(name: 'tech')
+    visit root_path
+    click_link_or_button "Create a Post"
+    fill_in "Title", with: "Jobs"
+    fill_in "Body", with: "find one"
+    fill_in "Author", with: "me"
+    select "publish", from: "post_status"
+    select "tech", from: "post_tag_ids"
+    click_link_or_button "Submit"
+
+    expect(current_path).to eq posts_path
+    expect(page).to have_content("All Posts")
+    expect(page).to have_content("Title")
+    expect(page).to have_content("Author")
+    expect(page).to have_content("Jobs")
+
+    click_link_or_button "Jobs"
+    expect(page).to have_content("Tags")
+    expect(page).to have_content("tech")
+  end
 end

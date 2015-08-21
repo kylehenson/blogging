@@ -1,0 +1,9 @@
+<h1>All Tags</h1>
+
+<div><%= link_to "Create a Tag", new_tag_path %></div>
+
+<div class="tags">
+  <% @tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</div>

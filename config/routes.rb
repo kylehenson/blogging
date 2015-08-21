@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'posts#index'
+  resources :tags
 
   resources :posts do
     resources :comments
   end
-    get '/practice', to: 'comments#practice'
 end
